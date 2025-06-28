@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Wyszukiwarka zdjęć AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>🔍 Wyszukiwarka zdjęć AI</h1>
+   <form method="POST" action="/search">
+        <input type="text" name="query" placeholder="np. kobieta z niebieskimi oczami">
+        <button type="submit">Szukaj</button>
+    </form>
+
+    {% if wyniki %}
+    <div class="gallery">
+        {% for wynik in wyniki %}
+        <div class="item">
+          
+<img src="{{ url_for('static', filename='zestaw_zdjec/' + wynik['nazwa']) }}">
+
+            <div class="caption">
+                <strong>{{ wynik['dopasowanie'] }}</strong><br>
+                {{ wynik['opis'] }}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <h2>📤 Prześlij nowe zdjęcie</h2>
+<form method="POST" action="/upload" enctype="multipart/form-data">
+  <input type="file" name="plik" accept="image/*" required>
+  <button type="submit">Wyślij</button>
+</form>
+<hr>
+
+</body>
+</html>

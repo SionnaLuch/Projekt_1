@@ -1,0 +1,6 @@
+body { font-family: sans-serif; margin: 2rem; }
+input { padding: 0.5rem; width: 300px; }
+.gallery { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+.item { width: 200px; }
+.item img { width: 100%; border-radius: 8px; }
+.caption { margin-top: 0.5rem; font-size: 0.9rem; }
